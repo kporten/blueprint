@@ -1,0 +1,9 @@
+{
+  "extends": "@blueprint/typescript-config/base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  }
+}

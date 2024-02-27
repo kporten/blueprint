@@ -1,0 +1,9 @@
+{
+  "name": "@blueprint/typescript-config",
+  "description": "TypeScript Configuration",
+  "private": true,
+  "version": "0.0.0",
+  "peerDependencies": {
+    "typescript": ">=5 <6"
+  }
+}

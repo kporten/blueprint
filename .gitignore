@@ -1,0 +1,9 @@
+# Common
+.DS_Store
+.env
+.turbo
+
+*.local
+*.log
+
+node_modules
