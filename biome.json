@@ -1,48 +1,35 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/1.6.0/schema.json",
   "formatter": {
     "indentStyle": "space"
   },
   "linter": {
     "rules": {
       "correctness": {
+        "noUnusedImports": "error",
         "noUnusedVariables": "error",
         "useHookAtTopLevel": "error"
       },
-      "nursery": {
-        "noEmptyBlockStatements": "error",
-        "noEmptyTypeParameters": "error",
-        "noGlobalAssign": "error",
-        "noGlobalEval": "error",
-        "noInvalidUseBeforeDeclaration": "error",
-        "noUnusedImports": "error",
-        "noUselessLoneBlockStatements": "error",
-        "noUselessTernary": "error",
-        "useAwait": "warn",
+      "style": {
+        "noNegationElse": "warn",
+        "useBlockStatements": "warn",
+        "useCollapsedElseIf": "warn",
         "useFilenamingConvention": {
           "level": "warn",
           "options": {
             "filenameCases": ["kebab-case"]
           }
         },
-        "useExportType": "warn",
         "useForOf": "warn",
-        "useImportType": "warn",
-        "useNodejsImportProtocol": "warn",
-        "useNumberNamespace": "warn",
-        "useShorthandFunctionType": "warn"
-      },
-      "style": {
-        "noNegationElse": "warn",
-        "useBlockStatements": "warn",
-        "useCollapsedElseIf": "warn",
         "useFragmentSyntax": "warn",
         "useNamingConvention": "warn",
         "useShorthandAssign": "warn",
         "useSingleCaseStatement": "warn"
       },
       "suspicious": {
-        "noConsoleLog": "warn"
+        "noConsoleLog": "warn",
+        "noEmptyBlockStatements": "warn",
+        "useAwait": "warn"
       }
     }
   },

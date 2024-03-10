@@ -75,14 +75,13 @@ const routeGetUser = createRoute({
   },
 });
 
-export default (
-  new OpenAPIHono<HonoEnv>({ defaultHook })
-    .use(routeGetUsers.getRoutingPath(), authMiddleware())
-    .use(
-      routeGetUser.getRoutingPath(),
-      authMiddleware(),
-    ) as OpenAPIHono<HonoEnv>
-)
+const app = new OpenAPIHono<HonoEnv>({ defaultHook });
+
+app
+  .use(routeGetUsers.getRoutingPath(), authMiddleware())
+  .use(routeGetUser.getRoutingPath(), authMiddleware());
+
+export default app
   .openapi(routeGetUsers, async (c) => {
     const users = await c.get('clerk').users.getUserList();
 
