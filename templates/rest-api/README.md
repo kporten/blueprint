@@ -10,7 +10,8 @@ This is a blueprint for a REST API including the following features:
 - Error monitoring
 - Health endpoint
 
-An example route set for `/users` is included.
+> [!NOTE]
+> An example route set for `/users` is included.
 
 ## Setup
 
@@ -18,7 +19,7 @@ An example route set for `/users` is included.
 - To use the error monitoring feature you need to create a [Sentry](https://sentry.io) account and get your DSN.
 - Copy the `.env.example` file and rename it to `.env`, then adapt the values where required.
 
-## Scripts
+## Tasks
 
 ```sh
 # start development server
