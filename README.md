@@ -34,7 +34,7 @@ Take advantage of the pre-configured setup and project templates to accelerate y
 > [!IMPORTANT]
 > Prerequisite is the global installation of [Bun](https://bun.sh/docs/installation) and [Turborepo](https://turbo.build/repo/docs/installing).
 
-1. Clone the template: `bunx degit kporten/blueprint my-project`
+1. Clone the blueprint: `bunx degit kporten/blueprint my-project`
 2. Follow the setup instructions in each template that you want to use.
 3. Install the dependencies: `bun install`
 4. Start the development servers: `turbo dev`
