@@ -1,0 +1,26 @@
+{
+  "name": "vite-template",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bunx --bun vite",
+    "build": "tsc && vite build",
+    "lint": "biome lint ./src",
+    "typecheck": "bun --bun tsc",
+    "check": "biome check --error-on-warnings .",
+    "format": "biome format --write .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.65",
+    "@types/react-dom": "18.2.21",
+    "@vitejs/plugin-react": "4.2.1",
+    "typescript": "5.4.2",
+    "vite": "5.1.6"
+  }
+}

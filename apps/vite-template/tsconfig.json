@@ -1,0 +1,10 @@
+{
+  "extends": "@blueprint/typescript-config/base",
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  }
+}
