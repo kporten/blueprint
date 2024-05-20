@@ -1,5 +1,5 @@
 import swagger from '@elysiajs/swagger';
-import { Elysia } from 'elysia';
+import { Elysia, t } from 'elysia';
 
 import { setup } from '~/setup';
 
@@ -8,11 +8,24 @@ import { v1 } from './v1';
 
 export const routes = new Elysia()
   .use(setup)
-  .get('/', () => ({
-    name: pkg.name,
-    description: pkg.description,
-    version: pkg.version,
-  }))
+  .get(
+    '/',
+    () => ({
+      name: pkg.name,
+      description: pkg.description,
+      version: pkg.version,
+    }),
+    {
+      response: {
+        200: t.Object({
+          name: t.String(),
+          description: t.String(),
+          version: t.String(),
+        }),
+        500: 'error.common',
+      },
+    },
+  )
   .guard(
     {
       isAuth: true,
