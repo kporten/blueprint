@@ -1,5 +1,5 @@
 {
-  "extends": "@blueprint/typescript-config/base",
+  "extends": "@total-typescript/tsconfig/bundler/no-dom",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
