@@ -49,7 +49,7 @@ export const users = new Elysia({ prefix: '/users' })
       } catch (e) {
         if (
           isClerkAPIResponseError(e) &&
-          e.errors[0].code === 'resource_not_found'
+          e.errors[0]?.code === 'resource_not_found'
         ) {
           throw new NotFoundError('user not found');
         }

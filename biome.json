@@ -33,7 +33,6 @@
         "useSingleCaseStatement": "warn"
       },
       "suspicious": {
-        "noConsoleLog": "warn",
         "noEmptyBlockStatements": "warn",
         "useAwait": "warn"
       }
