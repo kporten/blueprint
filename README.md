@@ -12,7 +12,7 @@ Take advantage of the pre-configured setup and app blueprints to accelerate your
 
 ## Apps
 
-### @blueprint/app-with-elysia
+### @blueprint/with-elysia
 
 This is an app blueprint for a REST API with Elysia.
 

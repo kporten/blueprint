@@ -1,4 +1,4 @@
-# @blueprint/app-with-elysia
+# @blueprint/with-elysia
 
 :electric_plug: [Port 3000](http://localhost:3000)
 
@@ -20,16 +20,16 @@ This is an app blueprint for a REST API with Elysia including the following feat
 
 ```sh
 # start development server
-turbo dev --filter=app-with-elysia
-
-# check types
-turbo typecheck --filter=app-with-elysia
-
-# check format and lint
-turbo check --filter=app-with-elysia
+turbo dev --filter=with-elysia
 
 # format files
-turbo format --filter=app-with-elysia
+turbo format --filter=with-elysia
+
+# check format and lint
+turbo check --filter=with-elysia
+
+# check types
+turbo typecheck --filter=with-elysia
 ```
 
 ## Tech Stack

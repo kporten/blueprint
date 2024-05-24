@@ -2,8 +2,7 @@ import { createClerkClient, verifyToken } from '@clerk/backend';
 import { bearer } from '@elysiajs/bearer';
 import { Elysia } from 'elysia';
 
-import { UnauthorizedError } from '~/lib/errors';
-
+import { UnauthorizedError } from '../lib/errors';
 import { env } from './env';
 
 export const auth = () =>

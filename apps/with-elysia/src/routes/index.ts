@@ -1,9 +1,8 @@
 import swagger from '@elysiajs/swagger';
 import { Elysia, t } from 'elysia';
 
-import { setup } from '~/setup';
-
 import pkg from '../../package.json';
+import { setup } from '../setup';
 import { v1 } from './v1';
 
 export const routes = new Elysia()

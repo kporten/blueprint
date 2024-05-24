@@ -1,7 +1,7 @@
 import { isClerkAPIResponseError } from '@clerk/shared';
 import { Elysia, NotFoundError, t } from 'elysia';
 
-import { setup } from '~/setup';
+import { setup } from '../../setup';
 
 export const userType = t.Object({
   id: t.String(),

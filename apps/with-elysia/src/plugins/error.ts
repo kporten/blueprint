@@ -1,7 +1,6 @@
 import { Elysia, InvertedStatusMap } from 'elysia';
 
-import { UnauthorizedError } from '~/lib/errors';
-
+import { UnauthorizedError } from '../lib/errors';
 import { env } from './env';
 
 export const error = () =>
