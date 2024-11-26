@@ -11,15 +11,30 @@
   },
   "linter": {
     "rules": {
+      "complexity": {
+        "noUselessStringConcat": "warn",
+        "noUselessUndefinedInitialization": "warn",
+        "useSimplifiedLogicExpression": "warn"
+      },
       "correctness": {
+        "noConstantMathMinMaxClamp": "error",
         "noUnusedImports": "error",
         "noUnusedVariables": "error",
+        "useArrayLiterals": "error",
         "useHookAtTopLevel": "error"
+      },
+      "performance": {
+        "noBarrelFile": "error",
+        "noReExportAll": "error"
       },
       "style": {
         "noNegationElse": "warn",
+        "noYodaExpression": "warn",
         "useBlockStatements": "warn",
         "useCollapsedElseIf": "warn",
+        "useConsistentArrayType": "warn",
+        "useConsistentBuiltinInstantiation": "warn",
+        "useExplicitLengthCheck": "warn",
         "useFilenamingConvention": {
           "level": "warn",
           "options": {
@@ -30,11 +45,13 @@
         "useFragmentSyntax": "warn",
         "useNamingConvention": "warn",
         "useShorthandAssign": "warn",
-        "useSingleCaseStatement": "warn"
+        "useThrowNewError": "warn",
+        "useThrowOnlyError": "warn"
       },
       "suspicious": {
-        "noEmptyBlockStatements": "warn",
-        "useAwait": "warn"
+        "noEmptyBlockStatements": "error",
+        "useAwait": "error",
+        "useErrorMessage": "error"
       }
     }
   },

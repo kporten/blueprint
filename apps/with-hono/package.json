@@ -1,0 +1,22 @@
+{
+  "name": "@blueprint/with-hono",
+  "description": "App with Hono",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "dev": "bun run --watch ./src/index.ts",
+    "check": "biome check --error-on-warnings",
+    "format": "biome format --write",
+    "typecheck": "bunx --bun tsc"
+  },
+  "dependencies": {
+    "hono": "4.6.12"
+  },
+  "devDependencies": {
+    "@total-typescript/tsconfig": "1.0.4",
+    "@types/bun": "1.1.13",
+    "typescript": "5.7.2"
+  }
+}
