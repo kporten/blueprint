@@ -1,8 +1,4 @@
-import { Hono } from 'hono';
-
-const app = new Hono().get('/', (c) => {
-  return c.json('OK');
-});
+import { app } from './app';
 
 export default {
   port: 3000,

@@ -8,9 +8,9 @@
   "bugs": "https://github.com/kporten/blueprint/issues",
   "private": true,
   "workspaces": ["apps/*", "packages/*"],
-  "packageManager": "bun@1.1.37",
+  "packageManager": "bun@1.1.42",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "turbo": "2.3.2"
+    "turbo": "2.3.3"
   }
 }

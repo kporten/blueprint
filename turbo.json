@@ -2,17 +2,17 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "check": {
-      "inputs": ["**/*.tsx", "**/*.ts", "**/*.json"]
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
     "format": {
-      "inputs": ["**/*.tsx", "**/*.ts", "**/*.json"]
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
     },
     "typecheck": {
-      "inputs": ["**/*.tsx", "**/*.ts"]
+      "inputs": ["**/*.ts", "**/*.tsx"]
     }
   }
 }
