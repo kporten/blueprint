@@ -18,4 +18,4 @@ COPY --from=prune --chown=bun:bun /app/out/full/ .
 USER bun
 ENV NODE_ENV=production
 EXPOSE 3000
-ENTRYPOINT ["bun", "run", "/app/apps/with-hono/src/index.ts"]
+CMD ["bun", "run", "/app/apps/with-hono/src/index.ts"]
