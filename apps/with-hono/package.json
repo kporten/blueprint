@@ -9,21 +9,32 @@
     "dev": "bun run --hot ./src/index.ts",
     "typecheck": "bunx --bun tsc",
     "check": "biome check --error-on-warnings",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:check": "drizzle-kit check",
+    "db:push": "drizzle-kit push",
+    "db:seed": "bun run ./src/db/seed.ts"
   },
   "dependencies": {
     "@hono/zod-validator": "0.4.2",
+    "@neondatabase/serverless": "0.10.4",
     "@scalar/hono-api-reference": "0.5.165",
-    "hono": "4.6.14",
-    "hono-openapi": "0.3.0",
+    "@t3-oss/env-core": "0.11.1",
+    "drizzle-orm": "0.38.3",
+    "drizzle-zod": "0.6.1",
+    "hono": "4.6.15",
+    "hono-openapi": "0.3.1",
     "http-status-codes": "2.3.0",
     "zod": "3.24.1",
-    "zod-openapi": "4.2.1",
+    "zod-openapi": "4.2.2",
     "zod-validation-error": "3.4.0"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "1.0.4",
     "@types/bun": "1.1.14",
+    "drizzle-kit": "0.30.1",
+    "drizzle-seed": "0.3.0",
     "typescript": "5.7.2"
   }
 }

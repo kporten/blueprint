@@ -1,33 +1,21 @@
+import { createSelectSchema } from 'drizzle-zod';
 import { Hono } from 'hono';
 import { describeRoute } from 'hono-openapi';
 import { resolver, validator } from 'hono-openapi/zod';
+import { HTTPException } from 'hono/http-exception';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import z from 'zod';
 
-import { HTTPException } from 'hono/http-exception';
+import { taskTable } from '#/db/schema';
+import { db } from '#/lib/db';
 import { errorSchema, mimeTypes } from '#/lib/openapi';
 import { validatorDefaultHook } from '#/lib/validator';
 
-const taskSchema = z
-  .object({
-    id: z
-      .string()
-      .uuid()
-      .openapi({ example: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }),
-    title: z.string().openapi({ example: 'Task title' }),
-  })
-  .openapi({ ref: 'Task' });
-
-const tasks = [
-  {
-    id: crypto.randomUUID(),
-    title: 'Title 1',
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Title 2',
-  },
-];
+const taskSelectSchema = createSelectSchema(taskTable, {
+  id: (schema) =>
+    schema.openapi({ example: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }),
+  description: (schema) => schema.openapi({ example: 'Task description' }),
+}).openapi({ ref: 'Task' });
 
 export default new Hono()
   .get(
@@ -39,7 +27,7 @@ export default new Hono()
           description: 'Task list',
           content: {
             [mimeTypes.json]: {
-              schema: resolver(z.array(taskSchema)),
+              schema: resolver(z.array(taskSelectSchema)),
             },
           },
         },
@@ -53,7 +41,11 @@ export default new Hono()
         },
       },
     }),
-    (c) => {
+    async (c) => {
+      const tasks = await db.query.taskTable.findMany({
+        orderBy: (table, { asc }) => [asc(table.id)],
+      });
+
       return c.json(tasks);
     },
   )
@@ -66,7 +58,7 @@ export default new Hono()
           description: 'Task',
           content: {
             [mimeTypes.json]: {
-              schema: resolver(taskSchema),
+              schema: resolver(taskSelectSchema),
             },
           },
         },
@@ -96,11 +88,17 @@ export default new Hono()
         },
       },
     }),
-    validator('param', taskSchema.pick({ id: true }), validatorDefaultHook),
-    (c) => {
+    validator(
+      'param',
+      taskSelectSchema.pick({ id: true }),
+      validatorDefaultHook,
+    ),
+    async (c) => {
       const param = c.req.valid('param');
 
-      const task = tasks.find((task) => task.id === param.id);
+      const task = await db.query.taskTable.findFirst({
+        where: (table, { eq }) => eq(table.id, param.id),
+      });
 
       if (!task) {
         throw new HTTPException(StatusCodes.NOT_FOUND, {

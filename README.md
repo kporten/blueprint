@@ -34,18 +34,43 @@ This is an app blueprint for a REST API with Hono.
 
 ## Tasks
 
+### Server
+
 ```sh
+# start development servers
+turbo dev
+```
+
+### Quality
+
+```sh
+# check types
+turbo typecheck
+
 # check format and lint
 turbo check
 
-# start development servers
-turbo dev
-
 # format files
 turbo format
+```
 
-# check types
-turbo typecheck
+### Database
+
+```sh
+# generate database migrations
+turbo db:generate
+
+# apply database migrations
+turbo db:migrate
+
+# check database migrations
+turbo db:check
+
+# push database schemas
+turbo db:push
+
+# seed database data
+turbo db:seed
 ```
 
 > [!NOTE]
