@@ -3,8 +3,8 @@ WORKDIR /app
 
 FROM base AS prune
 COPY . .
-RUN bunx npm install --package-lock-only
-RUN bunx json -I -f package.json -e "this.packageManager=\"npm@$(bunx npm --version)\""
+RUN bun install --yarn
+RUN bunx json -I -f package.json -e "this.packageManager=\"yarn@$(bunx yarn --version)\""
 RUN bunx turbo prune @blueprint/with-hono --docker
 
 FROM base AS install
