@@ -1,5 +1,5 @@
+import { STATUS_CODE } from '@std/http/status';
 import { HTTPException } from 'hono/http-exception';
-import { StatusCodes } from 'http-status-codes';
 import type { ZodError } from 'zod';
 import { fromZodError } from 'zod-validation-error';
 
@@ -14,7 +14,7 @@ export function validatorDefaultHook(
       },
 ) {
   if (!result.success) {
-    throw new HTTPException(StatusCodes.BAD_REQUEST, {
+    throw new HTTPException(STATUS_CODE.BadRequest, {
       message: fromZodError(result.error).toString(),
     });
   }

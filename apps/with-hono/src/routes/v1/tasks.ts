@@ -1,41 +1,53 @@
+import { STATUS_CODE, STATUS_TEXT } from '@std/http/status';
 import { createSelectSchema } from 'drizzle-zod';
 import { Hono } from 'hono';
 import { describeRoute } from 'hono-openapi';
 import { resolver, validator } from 'hono-openapi/zod';
 import { HTTPException } from 'hono/http-exception';
-import { ReasonPhrases, StatusCodes } from 'http-status-codes';
-import z from 'zod';
+import { z } from 'zod';
 
-import { taskTable } from '#/db/schema';
-import { db } from '#/lib/db';
-import { errorSchema, mimeTypes } from '#/lib/openapi';
-import { validatorDefaultHook } from '#/lib/validator';
+import { taskTable } from '#db/schema';
+import { db } from '#lib/db';
+import { createErrorSchema } from '#lib/openapi';
+import { validatorDefaultHook } from '#lib/validator';
 
 const taskSelectSchema = createSelectSchema(taskTable, {
   id: (schema) =>
     schema.openapi({ example: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }),
   description: (schema) => schema.openapi({ example: 'Task description' }),
+  createdAt: (schema) =>
+    schema.openapi({ example: '0000-00-00T00:00:00.000Z' }),
+  updatedAt: (schema) =>
+    schema.openapi({ example: '0000-00-00T00:00:00.000Z' }),
 }).openapi({ ref: 'Task' });
 
 export default new Hono()
+  .use(
+    describeRoute({
+      responses: {
+        [STATUS_CODE.InternalServerError]: {
+          description: STATUS_TEXT[STATUS_CODE.InternalServerError],
+          content: {
+            'application/json': {
+              schema: resolver(
+                createErrorSchema(STATUS_CODE.InternalServerError),
+              ),
+            },
+          },
+        },
+      },
+    }),
+  )
   .get(
     '/',
     describeRoute({
       description: 'Get a list of tasks',
       responses: {
-        [StatusCodes.OK]: {
-          description: 'Task list',
+        [STATUS_CODE.OK]: {
+          description: 'Tasks',
           content: {
-            [mimeTypes.json]: {
+            'application/json': {
               schema: resolver(z.array(taskSelectSchema)),
-            },
-          },
-        },
-        [StatusCodes.INTERNAL_SERVER_ERROR]: {
-          description: ReasonPhrases.INTERNAL_SERVER_ERROR,
-          content: {
-            [mimeTypes.json]: {
-              schema: resolver(errorSchema),
             },
           },
         },
@@ -54,35 +66,27 @@ export default new Hono()
     describeRoute({
       description: 'Get a task by id',
       responses: {
-        [StatusCodes.OK]: {
+        [STATUS_CODE.OK]: {
           description: 'Task',
           content: {
-            [mimeTypes.json]: {
+            'application/json': {
               schema: resolver(taskSelectSchema),
             },
           },
         },
-        [StatusCodes.BAD_REQUEST]: {
-          description: ReasonPhrases.BAD_REQUEST,
+        [STATUS_CODE.BadRequest]: {
+          description: 'Task request error',
           content: {
-            [mimeTypes.json]: {
-              schema: resolver(errorSchema),
+            'application/json': {
+              schema: resolver(createErrorSchema(STATUS_CODE.BadRequest)),
             },
           },
         },
-        [StatusCodes.NOT_FOUND]: {
-          description: ReasonPhrases.NOT_FOUND,
+        [STATUS_CODE.NotFound]: {
+          description: 'Task not found error',
           content: {
-            [mimeTypes.json]: {
-              schema: resolver(errorSchema),
-            },
-          },
-        },
-        [StatusCodes.INTERNAL_SERVER_ERROR]: {
-          description: ReasonPhrases.INTERNAL_SERVER_ERROR,
-          content: {
-            [mimeTypes.json]: {
-              schema: resolver(errorSchema),
+            'application/json': {
+              schema: resolver(createErrorSchema(STATUS_CODE.NotFound)),
             },
           },
         },
@@ -101,7 +105,7 @@ export default new Hono()
       });
 
       if (!task) {
-        throw new HTTPException(StatusCodes.NOT_FOUND, {
+        throw new HTTPException(STATUS_CODE.NotFound, {
           message: 'Task not found',
         });
       }

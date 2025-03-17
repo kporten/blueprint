@@ -1,3 +1,4 @@
+import { STATUS_CODE, STATUS_TEXT, type StatusCode } from '@std/http/status';
 import { Hono } from 'hono';
 import { openAPISpecs } from 'hono-openapi';
 import { cors } from 'hono/cors';
@@ -5,7 +6,6 @@ import { HTTPException } from 'hono/http-exception';
 import { logger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
 import { timing } from 'hono/timing';
-import { ReasonPhrases, StatusCodes, getReasonPhrase } from 'http-status-codes';
 
 import 'zod-openapi/extend';
 
@@ -33,7 +33,7 @@ app.get(
 );
 
 app.notFound(() => {
-  throw new HTTPException(StatusCodes.NOT_FOUND);
+  throw new HTTPException(STATUS_CODE.NotFound);
 });
 
 app.onError((err, c) => {
@@ -41,8 +41,7 @@ app.onError((err, c) => {
     return c.json(
       {
         status: err.status,
-        code: StatusCodes[err.status],
-        message: err.message || getReasonPhrase(err.status),
+        message: err.message || STATUS_TEXT[err.status as StatusCode],
       },
       err.status,
     );
@@ -52,10 +51,9 @@ app.onError((err, c) => {
 
   return c.json(
     {
-      status: StatusCodes.INTERNAL_SERVER_ERROR,
-      code: StatusCodes[StatusCodes.INTERNAL_SERVER_ERROR],
-      message: ReasonPhrases.INTERNAL_SERVER_ERROR,
+      status: STATUS_CODE.InternalServerError,
+      message: STATUS_TEXT[STATUS_CODE.InternalServerError],
     },
-    StatusCodes.INTERNAL_SERVER_ERROR,
+    STATUS_CODE.InternalServerError,
   );
 });

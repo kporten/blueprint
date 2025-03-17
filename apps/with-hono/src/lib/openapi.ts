@@ -1,20 +1,17 @@
-import { ReasonPhrases, StatusCodes } from 'http-status-codes';
-import z from 'zod';
+import { STATUS_TEXT, type StatusCode } from '@std/http/status';
+import { z } from 'zod';
 
-export const mimeTypes = {
-  json: 'application/json',
-} as const;
+export function createErrorSchema(statusCode: StatusCode) {
+  const statusText = STATUS_TEXT[statusCode];
 
-export const errorSchema = z
-  .object({
-    status: z.number().openapi({
-      example: StatusCodes.INTERNAL_SERVER_ERROR,
-    }),
-    code: z.string().openapi({
-      example: StatusCodes[StatusCodes.INTERNAL_SERVER_ERROR],
-    }),
-    message: z.string().openapi({
-      example: ReasonPhrases.INTERNAL_SERVER_ERROR,
-    }),
-  })
-  .openapi({ ref: 'Error' });
+  return z
+    .object({
+      status: z.number().int().openapi({
+        example: statusCode,
+      }),
+      message: z.string().openapi({
+        example: statusText,
+      }),
+    })
+    .openapi({ ref: statusText });
+}
