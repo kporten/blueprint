@@ -1,40 +1,23 @@
 import { STATUS_CODE, STATUS_TEXT } from '@std/http/status';
-import { createSelectSchema } from 'drizzle-zod';
 import { Hono } from 'hono';
 import { describeRoute } from 'hono-openapi';
-import { resolver, validator } from 'hono-openapi/zod';
+import { validator } from 'hono-openapi/zod';
 import { HTTPException } from 'hono/http-exception';
 import { z } from 'zod';
 
-import { taskTable } from '#db/schema';
-import { db } from '#lib/db';
-import { createErrorSchema } from '#lib/openapi';
+import { db } from '#db/client';
+import { taskSelectSchema } from '#db/schema';
+import { createErrorSchema, jsonResponse } from '#lib/openapi';
 import { validatorDefaultHook } from '#lib/validator';
-
-const taskSelectSchema = createSelectSchema(taskTable, {
-  id: (schema) =>
-    schema.openapi({ example: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }),
-  description: (schema) => schema.openapi({ example: 'Task description' }),
-  createdAt: (schema) =>
-    schema.openapi({ example: '0000-00-00T00:00:00.000Z' }),
-  updatedAt: (schema) =>
-    schema.openapi({ example: '0000-00-00T00:00:00.000Z' }),
-}).openapi({ ref: 'Task' });
 
 export default new Hono()
   .use(
     describeRoute({
       responses: {
-        [STATUS_CODE.InternalServerError]: {
-          description: STATUS_TEXT[STATUS_CODE.InternalServerError],
-          content: {
-            'application/json': {
-              schema: resolver(
-                createErrorSchema(STATUS_CODE.InternalServerError),
-              ),
-            },
-          },
-        },
+        [STATUS_CODE.InternalServerError]: jsonResponse(
+          createErrorSchema(STATUS_CODE.InternalServerError),
+          STATUS_TEXT[STATUS_CODE.InternalServerError],
+        ),
       },
     }),
   )
@@ -43,14 +26,7 @@ export default new Hono()
     describeRoute({
       description: 'Get a list of tasks',
       responses: {
-        [STATUS_CODE.OK]: {
-          description: 'Tasks',
-          content: {
-            'application/json': {
-              schema: resolver(z.array(taskSelectSchema)),
-            },
-          },
-        },
+        [STATUS_CODE.OK]: jsonResponse(z.array(taskSelectSchema), 'Tasks'),
       },
     }),
     async (c) => {
@@ -66,30 +42,15 @@ export default new Hono()
     describeRoute({
       description: 'Get a task by id',
       responses: {
-        [STATUS_CODE.OK]: {
-          description: 'Task',
-          content: {
-            'application/json': {
-              schema: resolver(taskSelectSchema),
-            },
-          },
-        },
-        [STATUS_CODE.BadRequest]: {
-          description: 'Task request error',
-          content: {
-            'application/json': {
-              schema: resolver(createErrorSchema(STATUS_CODE.BadRequest)),
-            },
-          },
-        },
-        [STATUS_CODE.NotFound]: {
-          description: 'Task not found error',
-          content: {
-            'application/json': {
-              schema: resolver(createErrorSchema(STATUS_CODE.NotFound)),
-            },
-          },
-        },
+        [STATUS_CODE.OK]: jsonResponse(taskSelectSchema, 'Task'),
+        [STATUS_CODE.BadRequest]: jsonResponse(
+          createErrorSchema(STATUS_CODE.BadRequest),
+          'Task request error',
+        ),
+        [STATUS_CODE.NotFound]: jsonResponse(
+          createErrorSchema(STATUS_CODE.NotFound),
+          'Task not found error',
+        ),
       },
     }),
     validator(

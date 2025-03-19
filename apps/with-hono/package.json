@@ -22,10 +22,10 @@
   "dependencies": {
     "@hono/zod-validator": "0.4.3",
     "@neondatabase/serverless": "0.10.4",
-    "@scalar/hono-api-reference": "0.7.1",
+    "@scalar/hono-api-reference": "0.7.2",
     "@std/http": "npm:@jsr/std__http@1.0.13",
     "@t3-oss/env-core": "0.12.0",
-    "drizzle-orm": "0.40.0",
+    "drizzle-orm": "0.40.1",
     "drizzle-zod": "0.7.0",
     "hono": "4.7.4",
     "hono-openapi": "0.4.6",

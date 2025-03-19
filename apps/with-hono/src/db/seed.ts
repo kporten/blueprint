@@ -1,7 +1,7 @@
 import { reset, seed } from 'drizzle-seed';
 
+import { db } from '#db/client';
 import * as schema from '#db/schema';
-import { db } from '#lib/db';
 
 await reset(db, schema);
 

@@ -1,4 +1,6 @@
 import { STATUS_TEXT, type StatusCode } from '@std/http/status';
+import type { DescribeRouteOptions } from 'hono-openapi';
+import { resolver } from 'hono-openapi/zod';
 import { z } from 'zod';
 
 export function createErrorSchema(statusCode: StatusCode) {
@@ -14,4 +16,15 @@ export function createErrorSchema(statusCode: StatusCode) {
       }),
     })
     .openapi({ ref: statusText });
+}
+
+export function jsonResponse(schema: z.ZodSchema, description: string) {
+  return {
+    description,
+    content: {
+      'application/json': {
+        schema: resolver(schema),
+      },
+    },
+  } satisfies NonNullable<DescribeRouteOptions['responses']>[string];
 }
