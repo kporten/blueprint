@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "@hono/zod-validator": "0.4.3",
-    "@neondatabase/serverless": "0.10.4",
+    "@neondatabase/serverless": "1.0.0",
+    "@paralleldrive/cuid2": "2.2.2",
     "@scalar/hono-api-reference": "0.7.2",
     "@std/http": "npm:@jsr/std__http@1.0.13",
     "@t3-oss/env-core": "0.12.0",
@@ -35,7 +36,7 @@
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "1.0.4",
-    "@types/bun": "1.2.5",
+    "@types/bun": "1.2.6",
     "drizzle-kit": "0.30.5",
     "drizzle-seed": "0.3.1",
     "openapi-types": "12.1.3"

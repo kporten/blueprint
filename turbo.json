@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/turbo/schema.json",
+  "ui": "tui",
   "tasks": {
     "dev": {
       "cache": false,
@@ -15,7 +16,8 @@
       "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
     },
     "db:generate": {
-      "cache": false
+      "cache": false,
+      "interactive": true
     },
     "db:migrate": {
       "cache": false
@@ -24,7 +26,8 @@
       "cache": false
     },
     "db:push": {
-      "cache": false
+      "cache": false,
+      "interactive": true
     },
     "db:seed": {
       "cache": false
