@@ -15,7 +15,7 @@ export function createErrorSchema(statusCode: StatusCode) {
         example: statusText,
       }),
     })
-    .openapi({ ref: statusText });
+    .openapi({ ref: statusText.replaceAll(' ', '') });
 }
 
 export function jsonResponse(schema: z.ZodSchema, description: string) {

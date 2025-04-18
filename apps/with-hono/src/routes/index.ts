@@ -1,4 +1,4 @@
-import { apiReference } from '@scalar/hono-api-reference';
+import { Scalar } from '@scalar/hono-api-reference';
 import { Hono } from 'hono';
 
 import v1 from './v1';
@@ -6,7 +6,7 @@ import v1 from './v1';
 export default new Hono()
   .get(
     '/',
-    apiReference({
+    Scalar({
       url: '/openapi',
     }),
   )
