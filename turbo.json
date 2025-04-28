@@ -15,6 +15,13 @@
     "format": {
       "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
     },
+    "test": {
+      "inputs": ["**/*.ts", "**/*.tsx"]
+    },
+    "test:watch": {
+      "cache": false,
+      "interactive": true
+    },
     "db:generate": {
       "cache": false,
       "interactive": true

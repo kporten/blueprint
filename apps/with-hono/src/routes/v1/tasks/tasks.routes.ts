@@ -89,7 +89,8 @@ export default new Hono()
 
       const [task] = await db.insert(taskTable).values(json).returning();
 
-      return c.json(task, STATUS_CODE.Created);
+      c.status(STATUS_CODE.Created);
+      return c.json(task!);
     },
   )
   .patch(
@@ -161,14 +162,16 @@ export default new Hono()
 
       const deleted = await db
         .delete(taskTable)
-        .where(eq(taskTable.id, param.id));
+        .where(eq(taskTable.id, param.id))
+        .returning();
 
-      if (deleted.rowCount === 0) {
+      if (deleted.length === 0) {
         throw new HTTPException(STATUS_CODE.NotFound, {
           message: 'Task not found',
         });
       }
 
-      return c.body(null, STATUS_CODE.NoContent);
+      c.status(STATUS_CODE.NoContent);
+      return c.body(null);
     },
   );

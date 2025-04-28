@@ -3,11 +3,15 @@ import { reset, seed } from 'drizzle-seed';
 import { taskTable } from '#db/schema';
 import { db } from '#lib/db';
 
-await reset(db, { taskTable });
+await reset(db, {
+  taskTable,
+});
 
 await seed(
   db,
-  { taskTable },
+  {
+    taskTable,
+  },
   {
     seed: 1,
   },

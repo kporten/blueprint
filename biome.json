@@ -29,6 +29,7 @@
       },
       "style": {
         "noNegationElse": "warn",
+        "noNonNullAssertion": "off",
         "noYodaExpression": "warn",
         "useBlockStatements": "warn",
         "useCollapsedElseIf": "warn",
