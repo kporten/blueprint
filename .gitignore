@@ -1,9 +1,5 @@
+# Common
 .DS_Store
+.env
 .turbo
-
-*.env
-*.local
-*.log
-*.vars
-
 node_modules

@@ -1,15 +1,17 @@
 {
   "name": "blueprint",
-  "description": "Monorepo blueprint",
-  "version": "0.2.0",
+  "description": "Monorepo Blueprint",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Kevin Porten <hello@kevinporten.dev>",
   "repository": "https://github.com/kporten/blueprint",
   "bugs": "https://github.com/kporten/blueprint/issues",
   "private": true,
   "workspaces": ["apps/*", "packages/*"],
+  "packageManager": "bun@1.2.10",
   "devDependencies": {
-    "@biomejs/biome": "1.7.3",
-    "turbo": "1.13.3"
+    "@biomejs/biome": "1.9.4",
+    "turbo": "2.5.2",
+    "typescript": "5.8.3"
   }
 }

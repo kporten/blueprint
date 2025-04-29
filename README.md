@@ -8,17 +8,17 @@
 
 This monorepo blueprint allows you to kickstart your projects with [Bun](https://bun.sh), [Turborepo](https://turbo.build/repo), [Biome](https://biomejs.dev) and [TypeScript](https://www.typescriptlang.org).
 
-Take advantage of the pre-configured setup and app blueprints to accelerate your development process with the efficiency and power of modern tools.
+Take advantage of the pre-configured setup to accelerate your development process with the efficiency of modern tools.
 
 ## Apps
 
-### @blueprint/with-elysia
+### @blueprint/with-hono
 
-This is an app blueprint for a REST API with Elysia.
+This is an app blueprint for a REST API with Hono.
 
 :electric_plug: [Port 3000](http://localhost:3000)
 
-:gem: [README](./apps/with-elysia/README.md)
+:gem: [README](./apps/with-hono/README.md)
 
 ## Getting Started
 
@@ -34,18 +34,53 @@ This is an app blueprint for a REST API with Elysia.
 
 ## Tasks
 
+### Server
+
 ```sh
+# start development servers
+turbo dev
+```
+
+### Quality
+
+```sh
+# check types
+turbo typecheck
+
 # check format and lint
 turbo check
 
-# start development servers
-turbo dev
-
 # format files
 turbo format
+```
 
-# check types
-turbo typecheck
+### Tests
+
+```sh
+# execute tests
+turbo test
+
+# execute tests in watch mode
+turbo test:watch
+```
+
+### Database
+
+```sh
+# generate database migrations
+turbo db:generate
+
+# apply database migrations
+turbo db:migrate
+
+# check database migrations
+turbo db:check
+
+# push database schemas
+turbo db:push
+
+# seed database data
+turbo db:seed
 ```
 
 > [!NOTE]

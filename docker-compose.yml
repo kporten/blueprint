@@ -1,0 +1,9 @@
+services:
+  with-hono:
+    build:
+      context: .
+      dockerfile: ./apps/with-hono/Dockerfile
+    env_file:
+      - ./apps/with-hono/.env
+    ports:
+      - "3000:3000"

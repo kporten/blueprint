@@ -1,18 +1,43 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
-    "check": {
-      "inputs": ["**/*.tsx", "**/*.ts", "**/*.json"]
-    },
+  "$schema": "./node_modules/turbo/schema.json",
+  "ui": "tui",
+  "tasks": {
     "dev": {
       "cache": false,
       "persistent": true
     },
-    "format": {
-      "inputs": ["**/*.tsx", "**/*.ts", "**/*.json"]
-    },
     "typecheck": {
-      "inputs": ["**/*.tsx", "**/*.ts"]
+      "inputs": ["**/*.ts", "**/*.tsx"]
+    },
+    "check": {
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
+    },
+    "format": {
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
+    },
+    "test": {
+      "inputs": ["**/*.ts", "**/*.tsx"]
+    },
+    "test:watch": {
+      "cache": false,
+      "interactive": true
+    },
+    "db:generate": {
+      "cache": false,
+      "interactive": true
+    },
+    "db:migrate": {
+      "cache": false
+    },
+    "db:check": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false,
+      "interactive": true
+    },
+    "db:seed": {
+      "cache": false
     }
   }
 }
