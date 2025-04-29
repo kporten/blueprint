@@ -4,11 +4,12 @@
 
 This is a blueprint for a REST API including the following features:
 
-- OpenAPI specification with [Hono OpenAPI](https://github.com/rhinobase/hono-openapi)
+- OpenAPI specification
 - PostgreSQL database setup with [Neon](https://neon.tech)
-- Middleware setup: CORS, Secure Headers, Timing, Logger
+- Middleware setup for CORS, Secure Headers, Timing and Logger
 - Centralized error handling
-- Example route set for `/tasks`
+- Example routes and tests for tasks
+- Optional Docker setup (Dockerfile and Docker Compose)
 
 ## Setup
 
@@ -75,7 +76,7 @@ bunx drizzle-kit [command]
 
 ## Tech Stack
 
-- [Hono](https://hono.dev) as web framework
+- [Hono](https://hono.dev) with [Hono OpenAPI](https://github.com/rhinobase/hono-openapi) as web framework
 - [Drizzle](https://orm.drizzle.team/) as ORM
 - [Zod](https://zod.dev) for data validation
 - [Scalar](https://scalar.com) as OpenAPI reference user interface
