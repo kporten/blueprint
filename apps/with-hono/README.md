@@ -37,6 +37,16 @@ turbo @blueprint/with-hono#check
 turbo @blueprint/with-hono#format
 ```
 
+### Tests
+
+```sh
+# execute tests
+turbo @blueprint/with-hono#test
+
+# execute tests in watch mode
+turbo @blueprint/with-hono#test:watch
+```
+
 ### Database
 
 ```sh

@@ -54,6 +54,16 @@ turbo check
 turbo format
 ```
 
+### Tests
+
+```sh
+# execute tests
+turbo test
+
+# execute tests in watch mode
+turbo test:watch
+```
+
 ### Database
 
 ```sh
