@@ -4,5 +4,9 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports.biome": "explicit"
   },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "tailwindCSS.classFunctions": ["cva"],
   "typescript.tsdk": "node_modules/typescript/lib"
 }

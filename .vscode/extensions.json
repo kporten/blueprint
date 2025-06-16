@@ -1,3 +1,8 @@
 {
-  "recommendations": ["biomejs.biome", "oven.bun-vscode", "Vercel.turbo-vsc"]
+  "recommendations": [
+    "biomejs.biome",
+    "bradlc.vscode-tailwindcss",
+    "oven.bun-vscode",
+    "Vercel.turbo-vsc"
+  ]
 }

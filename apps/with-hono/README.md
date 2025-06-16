@@ -1,6 +1,6 @@
 # @blueprint/with-hono
 
-:electric_plug: [Port 3000](http://localhost:3000)
+:electric_plug: [Port 8000](http://localhost:8000)
 
 This is a blueprint for a REST API including the following features:
 

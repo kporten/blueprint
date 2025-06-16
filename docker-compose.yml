@@ -6,4 +6,12 @@ services:
     env_file:
       - ./apps/with-hono/.env
     ports:
+      - "8000:8000"
+  with-next:
+    build:
+      context: .
+      dockerfile: ./apps/with-next/Dockerfile
+    env_file:
+      - ./apps/with-next/.env
+    ports:
       - "3000:3000"

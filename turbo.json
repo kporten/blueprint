@@ -6,6 +6,15 @@
       "cache": false,
       "persistent": true
     },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"]
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
+    },
     "typecheck": {
       "inputs": ["**/*.ts", "**/*.tsx"]
     },

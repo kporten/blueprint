@@ -1,9 +1,8 @@
 {
   "name": "@blueprint/with-hono",
-  "description": "This is an app blueprint for a REST API with Hono.",
+  "description": "This is a blueprint for a REST API with Hono.",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "imports": {
     "#*": ["./src/*.ts"]
   },
@@ -39,8 +38,8 @@
   "devDependencies": {
     "@electric-sql/pglite": "0.3.0",
     "@total-typescript/tsconfig": "1.0.4",
-    "@types/bun": "1.2.10",
-    "drizzle-kit": "0.31.0",
+    "@types/bun": "1.2.13",
+    "drizzle-kit": "0.31.1",
     "drizzle-seed": "0.3.1",
     "openapi-types": "12.1.3",
     "postgres": "3.4.5"

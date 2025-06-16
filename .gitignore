@@ -1,5 +1,9 @@
 # Common
 .DS_Store
-.env
+.env*
 .turbo
+*.tsbuildinfo
 node_modules
+
+# Next.js
+.next
