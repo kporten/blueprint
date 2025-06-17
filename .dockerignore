@@ -5,5 +5,8 @@
 **/*.tsbuildinfo
 **/node_modules
 
+# Next.js
+**/.next
+
 # Docker
 .git
