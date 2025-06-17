@@ -61,9 +61,9 @@ bunx drizzle-kit [command]
 ## Tech Stack
 
 - [Next.js](https://nextjs.org) as web framework
-- [Next-Intl](https://next-intl.dev) for internationalization
+- [Next Intl](https://next-intl.dev) for internationalization
 - [Nuqs](https://nuqs.47ng.com/) for type-safe search params
 - [oRPC](https://orpc.unnoq.com/) for server actions
-- [Shadcn/UI](https://ui.shadcn.com) for UI components
+- [Shadcn UI](https://ui.shadcn.com) for UI components
 - [Drizzle](https://orm.drizzle.team/) as ORM
 - [Zod](https://zod.dev) for data validation
