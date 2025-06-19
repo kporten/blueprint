@@ -4,9 +4,10 @@
 
 This is a blueprint for a web app including the following features:
 
-- Internationalization setup
+- Internationalization
+- [Shadcn UI](https://ui.shadcn.com) for UI components
 - PostgreSQL database setup with [Neon](https://neon.tech)
-- Next.js Standalone Mode Docker setup (Dockerfile and Docker Compose)
+- Docker (Next.js standalone output)
 
 ## Setup
 
@@ -15,11 +16,14 @@ This is a blueprint for a web app including the following features:
 
 ## Tasks
 
-### Server
+### Development
 
 ```sh
 # start development server
 turbo @blueprint/with-next#dev
+
+# build application
+turbo @blueprint/with-next#build
 ```
 
 ### Quality
@@ -62,8 +66,8 @@ bunx drizzle-kit [command]
 
 - [Next.js](https://nextjs.org) as web framework
 - [Next Intl](https://next-intl.dev) for internationalization
+- [Tailwind CSS](https://tailwindcss.com/) as CSS framework
 - [Nuqs](https://nuqs.47ng.com/) for type-safe search params
 - [oRPC](https://orpc.unnoq.com/) for server actions
-- [Shadcn UI](https://ui.shadcn.com) for UI components
 - [Drizzle](https://orm.drizzle.team/) as ORM
 - [Zod](https://zod.dev) for data validation

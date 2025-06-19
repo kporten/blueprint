@@ -3,7 +3,7 @@ import { STATUS_CODE } from '@std/http/status';
 import type { InferResponseType } from 'hono';
 import { testClient } from 'hono/testing';
 
-import tasks from './tasks.routes';
+import tasks from './route';
 
 const client = testClient(tasks);
 

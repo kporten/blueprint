@@ -6,6 +6,9 @@
     "defaultBranch": "main",
     "useIgnoreFile": true
   },
+  "files": {
+    "ignore": ["migrations"]
+  },
   "formatter": {
     "indentStyle": "space"
   },

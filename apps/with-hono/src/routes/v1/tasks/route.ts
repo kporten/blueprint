@@ -1,20 +1,23 @@
 import { STATUS_CODE } from '@std/http/status';
-import { eq } from 'drizzle-orm';
 import { Hono } from 'hono';
 import { describeRoute } from 'hono-openapi';
-import { validator } from 'hono-openapi/zod';
 import { HTTPException } from 'hono/http-exception';
 import { z } from 'zod';
 
 import {
   taskInsertSchema,
   taskSelectSchema,
-  taskTable,
   taskUpdateSchema,
-} from '#db/schema';
-import { db } from '#lib/db';
+} from '#features/tasks/schema';
+import {
+  deleteTask,
+  getTask,
+  getTasks,
+  insertTask,
+  updateTask,
+} from '#features/tasks/service';
 import { createErrorSchema, jsonResponse } from '#lib/openapi';
-import { validatorDefaultHook } from '#lib/validator';
+import { validator } from '#lib/validator';
 
 export default new Hono()
   .get(
@@ -27,7 +30,7 @@ export default new Hono()
       },
     }),
     async (c) => {
-      const tasks = await db.query.taskTable.findMany();
+      const tasks = await getTasks();
 
       return c.json(tasks);
     },
@@ -49,17 +52,11 @@ export default new Hono()
         ),
       },
     }),
-    validator(
-      'param',
-      taskSelectSchema.pick({ id: true }),
-      validatorDefaultHook,
-    ),
+    validator('param', taskSelectSchema.pick({ id: true })),
     async (c) => {
       const param = c.req.valid('param');
 
-      const task = await db.query.taskTable.findFirst({
-        where: eq(taskTable.id, param.id),
-      });
+      const task = await getTask(param.id);
 
       if (!task) {
         throw new HTTPException(STATUS_CODE.NotFound, {
@@ -83,14 +80,14 @@ export default new Hono()
         ),
       },
     }),
-    validator('json', taskInsertSchema, validatorDefaultHook),
+    validator('json', taskInsertSchema),
     async (c) => {
       const json = c.req.valid('json');
 
-      const [task] = await db.insert(taskTable).values(json).returning();
+      const task = await insertTask(json);
 
       c.status(STATUS_CODE.Created);
-      return c.json(task!);
+      return c.json(task);
     },
   )
   .patch(
@@ -110,21 +107,13 @@ export default new Hono()
         ),
       },
     }),
-    validator(
-      'param',
-      taskSelectSchema.pick({ id: true }),
-      validatorDefaultHook,
-    ),
-    validator('json', taskUpdateSchema, validatorDefaultHook),
+    validator('param', taskSelectSchema.pick({ id: true })),
+    validator('json', taskUpdateSchema),
     async (c) => {
       const param = c.req.valid('param');
       const json = c.req.valid('json');
 
-      const [task] = await db
-        .update(taskTable)
-        .set(json)
-        .where(eq(taskTable.id, param.id))
-        .returning();
+      const task = await updateTask(param.id, json);
 
       if (!task) {
         throw new HTTPException(STATUS_CODE.NotFound, {
@@ -152,20 +141,13 @@ export default new Hono()
         ),
       },
     }),
-    validator(
-      'param',
-      taskSelectSchema.pick({ id: true }),
-      validatorDefaultHook,
-    ),
+    validator('param', taskSelectSchema.pick({ id: true })),
     async (c) => {
       const param = c.req.valid('param');
 
-      const deleted = await db
-        .delete(taskTable)
-        .where(eq(taskTable.id, param.id))
-        .returning();
+      const task = await deleteTask(param.id);
 
-      if (deleted.length === 0) {
+      if (!task) {
         throw new HTTPException(STATUS_CODE.NotFound, {
           message: 'Task not found',
         });

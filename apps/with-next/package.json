@@ -6,34 +6,34 @@
   "scripts": {
     "dev": "bunx --bun next dev --turbopack",
     "build": "bunx --bun next build",
-    "start": "bun .next/standalone/apps/with-next/server.js",
     "typecheck": "bunx --bun tsc",
     "check": "biome check --error-on-warnings",
     "format": "biome format --write",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:check": "drizzle-kit check",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "db:seed": "bun run ./test/seed.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "1.0.1",
-    "@orpc/client": "1.5.1",
-    "@orpc/react": "1.5.1",
-    "@orpc/server": "1.5.1",
+    "@orpc/client": "1.5.2",
+    "@orpc/react": "1.5.2",
+    "@orpc/server": "1.5.2",
     "@paralleldrive/cuid2": "2.2.2",
     "@t3-oss/env-nextjs": "0.13.8",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "drizzle-orm": "0.44.2",
     "drizzle-zod": "0.8.2",
-    "lucide-react": "0.515.0",
-    "next": "15.3.3",
+    "lucide-react": "0.518.0",
+    "next": "15.3.4",
     "next-intl": "4.1.0",
     "nuqs": "2.4.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwind-merge": "3.3.1",
-    "zod": "3.25.64"
+    "zod": "3.25.67"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.1.10",
@@ -43,7 +43,7 @@
     "@types/react-dom": "19.1.6",
     "drizzle-kit": "0.31.1",
     "drizzle-seed": "0.3.1",
-    "postcss": "8.5.5",
+    "postcss": "8.5.6",
     "postgres": "3.4.7",
     "tailwindcss": "4.1.10",
     "tw-animate-css": "1.3.4"

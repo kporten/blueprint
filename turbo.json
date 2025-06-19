@@ -8,17 +8,15 @@
     },
     "build": {
       "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**"]
     },
-    "start": {
-      "dependsOn": ["build"],
-      "cache": false,
-      "persistent": true
-    },
     "typecheck": {
+      "dependsOn": ["^typecheck"],
       "inputs": ["**/*.ts", "**/*.tsx"]
     },
     "check": {
+      "dependsOn": ["^check"],
       "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
     },
     "format": {

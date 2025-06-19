@@ -7,8 +7,6 @@ import { logger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
 import { timing } from 'hono/timing';
 
-import 'zod-openapi/extend';
-
 import { createErrorSchema, jsonResponse } from '#lib/openapi';
 
 import pkg from '../package.json';

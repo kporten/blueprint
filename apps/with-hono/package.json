@@ -21,27 +21,27 @@
     "db:seed": "bun run ./test/seed.ts"
   },
   "dependencies": {
-    "@hono/zod-validator": "0.5.0",
-    "@neondatabase/serverless": "1.0.0",
+    "@hono/zod-validator": "0.7.0",
+    "@neondatabase/serverless": "1.0.1",
     "@paralleldrive/cuid2": "2.2.2",
-    "@scalar/hono-api-reference": "0.8.5",
-    "@std/http": "npm:@jsr/std__http@1.0.15",
-    "@t3-oss/env-core": "0.13.0",
-    "drizzle-orm": "0.43.1",
+    "@scalar/hono-api-reference": "0.9.4",
+    "@std/http": "npm:@jsr/std__http@1.0.18",
+    "@t3-oss/env-core": "0.13.8",
+    "drizzle-orm": "0.44.2",
     "drizzle-zod": "0.7.1",
-    "hono": "4.7.8",
-    "hono-openapi": "0.4.6",
-    "zod": "3.24.3",
+    "hono": "4.8.0",
+    "hono-openapi": "0.4.8",
+    "zod": "3.25.67",
     "zod-openapi": "4.2.4",
-    "zod-validation-error": "3.4.0"
+    "zod-validation-error": "3.5.2"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "0.3.0",
+    "@electric-sql/pglite": "0.3.3",
     "@total-typescript/tsconfig": "1.0.4",
-    "@types/bun": "1.2.13",
+    "@types/bun": "1.2.16",
     "drizzle-kit": "0.31.1",
     "drizzle-seed": "0.3.1",
     "openapi-types": "12.1.3",
-    "postgres": "3.4.5"
+    "postgres": "3.4.7"
   }
 }

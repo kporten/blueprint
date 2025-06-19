@@ -6,10 +6,10 @@ This is a blueprint for a REST API including the following features:
 
 - OpenAPI specification
 - PostgreSQL database setup with [Neon](https://neon.tech)
-- Middleware setup for CORS, Secure Headers, Timing and Logger
+- Middleware for CORS, Secure Headers, Timing and Logger
 - Centralized error handling
 - Example routes and tests for tasks
-- Optional Docker setup (Dockerfile and Docker Compose)
+- Docker (optional)
 
 ## Setup
 
@@ -18,7 +18,7 @@ This is a blueprint for a REST API including the following features:
 
 ## Tasks
 
-### Server
+### Development
 
 ```sh
 # start development server

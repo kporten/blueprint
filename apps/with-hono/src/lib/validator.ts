@@ -1,21 +1,19 @@
 import { STATUS_CODE } from '@std/http/status';
+import type { ValidationTargets } from 'hono';
+import { validator as zValidator } from 'hono-openapi/zod';
 import { HTTPException } from 'hono/http-exception';
-import type { ZodError } from 'zod';
-import { fromZodError } from 'zod-validation-error';
+import type { ZodSchema } from 'zod';
+import { fromZodError, isZodErrorLike } from 'zod-validation-error';
 
-export function validatorDefaultHook(
-  result:
-    | {
-        success: true;
-      }
-    | {
-        success: false;
-        error: ZodError;
-      },
-) {
-  if (!result.success) {
-    throw new HTTPException(STATUS_CODE.BadRequest, {
-      message: fromZodError(result.error).toString(),
-    });
-  }
+export function validator<
+  Target extends keyof ValidationTargets,
+  Schema extends ZodSchema,
+>(target: Target, schema: Schema) {
+  return zValidator(target, schema, (result) => {
+    if (!result.success && isZodErrorLike(result.error)) {
+      throw new HTTPException(STATUS_CODE.BadRequest, {
+        message: fromZodError(result.error).toString(),
+      });
+    }
+  });
 }
