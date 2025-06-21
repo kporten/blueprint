@@ -14,11 +14,19 @@ Take advantage of the pre-configured setup to accelerate your development proces
 
 ### @blueprint/with-hono
 
-This is an app blueprint for a REST API with Hono.
+This is a blueprint for a REST API with Hono.
+
+:electric_plug: [Port 8000](http://localhost:8000)
+
+:gem: [README](./apps/with-hono/README.md)
+
+### @blueprint/with-next
+
+This is a blueprint for a web app with Next.js.
 
 :electric_plug: [Port 3000](http://localhost:3000)
 
-:gem: [README](./apps/with-hono/README.md)
+:gem: [README](./apps/with-next/README.md)
 
 ## Getting Started
 
