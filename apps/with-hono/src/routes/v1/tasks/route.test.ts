@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it } from 'bun:test';
+
 import { STATUS_CODE } from '@std/http/status';
 import type { InferResponseType } from 'hono';
 import { testClient } from 'hono/testing';

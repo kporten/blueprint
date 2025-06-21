@@ -4,20 +4,22 @@
   "private": true,
   "version": "0.0.0",
   "imports": {
-    "#*": ["./src/*.ts"]
+    "#*": [
+      "./src/*.ts"
+    ]
   },
   "exports": "./src/index.ts",
   "scripts": {
     "dev": "bun run --hot ./src/index.ts",
     "typecheck": "bunx --bun tsc",
-    "check": "biome check --error-on-warnings",
-    "format": "biome format --write",
+    "check": "bunx --bun biome check --error-on-warnings",
+    "format": "bunx --bun biome format --write",
     "test": "bun test --preload ./test/setup.ts",
     "test:watch": "bun test --watch --preload ./test/setup.ts",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:check": "drizzle-kit check",
-    "db:push": "drizzle-kit push",
+    "db:generate": "bunx --bun drizzle-kit generate",
+    "db:migrate": "bunx --bun drizzle-kit migrate",
+    "db:check": "bunx --bun drizzle-kit check",
+    "db:push": "bunx --bun drizzle-kit push",
     "db:seed": "bun run ./test/seed.ts"
   },
   "dependencies": {

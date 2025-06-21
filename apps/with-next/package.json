@@ -7,12 +7,12 @@
     "dev": "bunx --bun next dev --turbopack",
     "build": "bunx --bun next build",
     "typecheck": "bunx --bun tsc",
-    "check": "biome check --error-on-warnings",
-    "format": "biome format --write",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:check": "drizzle-kit check",
-    "db:push": "drizzle-kit push",
+    "check": "bunx --bun biome check --error-on-warnings",
+    "format": "bunx --bun biome format --write",
+    "db:generate": "bunx --bun drizzle-kit generate",
+    "db:migrate": "bunx --bun drizzle-kit migrate",
+    "db:check": "bunx --bun drizzle-kit check",
+    "db:push": "bunx --bun drizzle-kit push",
     "db:seed": "bun run ./test/seed.ts"
   },
   "dependencies": {

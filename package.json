@@ -7,10 +7,13 @@
   "repository": "https://github.com/kporten/blueprint",
   "bugs": "https://github.com/kporten/blueprint/issues",
   "private": true,
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "packageManager": "bun@1.2.16",
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.0.4",
     "turbo": "2.5.4",
     "typescript": "5.8.3"
   },

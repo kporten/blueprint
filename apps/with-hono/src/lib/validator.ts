@@ -1,7 +1,7 @@
 import { STATUS_CODE } from '@std/http/status';
 import type { ValidationTargets } from 'hono';
-import { validator as zValidator } from 'hono-openapi/zod';
 import { HTTPException } from 'hono/http-exception';
+import { validator as zValidator } from 'hono-openapi/zod';
 import type { ZodSchema } from 'zod';
 import { fromZodError, isZodErrorLike } from 'zod-validation-error';
 

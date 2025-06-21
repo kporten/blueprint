@@ -7,37 +7,59 @@
     "useIgnoreFile": true
   },
   "files": {
-    "ignore": ["migrations"]
+    "includes": ["**", "!**/migrations", "!**/.next"]
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              [":BUN:", ":NODE:"],
+              ":BLANK_LINE:",
+              [":PACKAGE:", ":PACKAGE_WITH_PROTOCOL:"],
+              ":BLANK_LINE:",
+              ":ALIAS:",
+              ":BLANK_LINE:",
+              ":PATH:"
+            ]
+          }
+        }
+      }
+    }
   },
   "formatter": {
     "indentStyle": "space"
   },
   "linter": {
+    "includes": ["**", "!**/*.d.ts"],
     "rules": {
       "complexity": {
         "noUselessStringConcat": "warn",
-        "noUselessUndefinedInitialization": "warn",
         "useSimplifiedLogicExpression": "warn"
       },
       "correctness": {
-        "noConstantMathMinMaxClamp": "error",
-        "noUnusedImports": "error",
-        "noUnusedVariables": "error",
-        "useArrayLiterals": "error",
-        "useHookAtTopLevel": "error"
+        "noUndeclaredDependencies": "error"
       },
       "performance": {
-        "noBarrelFile": "error",
-        "noReExportAll": "error"
+        "noBarrelFile": "warn",
+        "noReExportAll": "warn"
       },
       "style": {
+        "noInferrableTypes": "warn",
         "noNegationElse": "warn",
-        "noNonNullAssertion": "off",
+        "noNonNullAssertion": "info",
+        "noParameterAssign": "warn",
+        "noUnusedTemplateLiteral": "warn",
+        "noUselessElse": "warn",
         "noYodaExpression": "warn",
+        "useAsConstAssertion": "warn",
         "useBlockStatements": "warn",
         "useCollapsedElseIf": "warn",
-        "useConsistentArrayType": "warn",
+        "useCollapsedIf": "warn",
         "useConsistentBuiltinInstantiation": "warn",
+        "useDefaultParameterLast": "warn",
         "useExplicitLengthCheck": "warn",
         "useFilenamingConvention": {
           "level": "warn",
@@ -45,17 +67,22 @@
             "filenameCases": ["kebab-case"]
           }
         },
-        "useForOf": "warn",
-        "useFragmentSyntax": "warn",
         "useNamingConvention": "warn",
+        "useNumberNamespace": "warn",
         "useShorthandAssign": "warn",
         "useThrowNewError": "warn",
         "useThrowOnlyError": "warn"
       },
       "suspicious": {
-        "noEmptyBlockStatements": "error",
-        "useAwait": "error",
-        "useErrorMessage": "error"
+        "noConsole": {
+          "level": "info",
+          "options": {
+            "allow": ["error", "info", "warn"]
+          }
+        },
+        "noEmptyBlockStatements": "warn",
+        "useAwait": "warn",
+        "useErrorMessage": "warn"
       }
     }
   },

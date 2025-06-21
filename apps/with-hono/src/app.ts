@@ -1,11 +1,11 @@
 import { STATUS_CODE, STATUS_TEXT, type StatusCode } from '@std/http/status';
 import { Hono } from 'hono';
-import { describeRoute, openAPISpecs } from 'hono-openapi';
 import { cors } from 'hono/cors';
 import { HTTPException } from 'hono/http-exception';
 import { logger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
 import { timing } from 'hono/timing';
+import { describeRoute, openAPISpecs } from 'hono-openapi';
 
 import { createErrorSchema, jsonResponse } from '#lib/openapi';
 

@@ -1,7 +1,7 @@
 import { STATUS_CODE } from '@std/http/status';
 import { Hono } from 'hono';
-import { describeRoute } from 'hono-openapi';
 import { HTTPException } from 'hono/http-exception';
+import { describeRoute } from 'hono-openapi';
 import { z } from 'zod';
 
 import {
