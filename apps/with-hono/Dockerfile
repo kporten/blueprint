@@ -1,4 +1,4 @@
-FROM oven/bun:1.2.16-alpine AS base
+FROM oven/bun:1.2.23-alpine AS base
 WORKDIR /app
 
 FROM base AS prune
@@ -14,6 +14,4 @@ COPY --from=install --chown=bun:bun /app/node_modules node_modules
 COPY --from=prune --chown=bun:bun /app/out/full/ .
 
 USER bun
-ENV NODE_ENV=production
-EXPOSE 8000
 CMD ["bun", "run", "apps/with-hono/src/index.ts"]

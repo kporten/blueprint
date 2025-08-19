@@ -9,5 +9,5 @@ export default defineConfig({
   dialect: 'postgresql',
   schema: './src/db/schema.ts',
   casing: 'snake_case',
-  out: './migrations',
+  out: './src/db/migrations',
 });

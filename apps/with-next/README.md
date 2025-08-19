@@ -2,12 +2,16 @@
 
 :electric_plug: [Port 3000](http://localhost:3000)
 
-This is a blueprint for a web app including the following features:
+This is a blueprint for a web app with Next.js.
 
-- Internationalization
-- [Shadcn UI](https://ui.shadcn.com) for UI components
-- PostgreSQL database setup with [Neon](https://neon.tech)
-- Docker (Next.js standalone output)
+- ⚡ [Next.js](https://nextjs.org) as web framework
+- 🎨 [Shadcn UI](https://ui.shadcn.com) and [Tailwind CSS](https://tailwindcss.com) for UI components
+- 🌐 [Next Intl](https://next-intl.dev) for internationalization
+- 🔍 [Nuqs](https://nuqs.47ng.com) for type-safe search params
+- 🗄️ [Drizzle](https://orm.drizzle.team) as ORM with a [Neon](https://neon.tech) PostgreSQL database
+- ✅ [Zod](https://zod.dev) for data validation
+- 🌍 [T3 Env](https://env.t3.gg) for type-safe environment variables
+- 🐳 Docker setup with Bun runtime (Next.js standalone output)
 
 ## Setup
 
@@ -24,19 +28,19 @@ turbo @blueprint/with-next#dev
 
 # build application
 turbo @blueprint/with-next#build
+
+# check types
+turbo @blueprint/with-next#typecheck
 ```
 
 ### Quality
 
 ```sh
-# check types
-turbo @blueprint/with-next#typecheck
-
 # check format and lint
 turbo @blueprint/with-next#check
 
 # format files
-turbo @blueprint/with-next#format
+turbo @blueprint/with-next#check:fix
 ```
 
 ### Database
@@ -53,6 +57,9 @@ turbo @blueprint/with-next#db:check
 
 # push database schema
 turbo @blueprint/with-next#db:push
+
+# seed database data
+turbo @blueprint/with-next#db:seed
 ```
 
 ## Tools
@@ -61,13 +68,3 @@ turbo @blueprint/with-next#db:push
 # https://orm.drizzle.team/docs/kit-overview
 bunx drizzle-kit [command]
 ```
-
-## Tech Stack
-
-- [Next.js](https://nextjs.org) as web framework
-- [Next Intl](https://next-intl.dev) for internationalization
-- [Tailwind CSS](https://tailwindcss.com/) as CSS framework
-- [Nuqs](https://nuqs.47ng.com/) for type-safe search params
-- [oRPC](https://orpc.unnoq.com/) for server actions
-- [Drizzle](https://orm.drizzle.team/) as ORM
-- [Zod](https://zod.dev) for data validation

@@ -7,7 +7,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!**/migrations", "!**/.next"]
+    "includes": ["**", "!**/migrations"]
   },
   "assist": {
     "actions": {
@@ -36,10 +36,12 @@
     "includes": ["**", "!**/*.d.ts"],
     "rules": {
       "complexity": {
+        "noImplicitCoercions": "warn",
         "noUselessStringConcat": "warn",
         "useSimplifiedLogicExpression": "warn"
       },
       "correctness": {
+        "noReactPropAssignments": "error",
         "noUndeclaredDependencies": "error"
       },
       "performance": {
@@ -59,6 +61,7 @@
         "useCollapsedElseIf": "warn",
         "useCollapsedIf": "warn",
         "useConsistentBuiltinInstantiation": "warn",
+        "useConsistentObjectDefinitions": "warn",
         "useDefaultParameterLast": "warn",
         "useExplicitLengthCheck": "warn",
         "useFilenamingConvention": {
@@ -67,7 +70,12 @@
             "filenameCases": ["kebab-case"]
           }
         },
-        "useNamingConvention": "warn",
+        "useNamingConvention": {
+          "level": "warn",
+          "options": {
+            "strictCase": false
+          }
+        },
         "useNumberNamespace": "warn",
         "useShorthandAssign": "warn",
         "useThrowNewError": "warn",
@@ -81,6 +89,8 @@
           }
         },
         "noEmptyBlockStatements": "warn",
+        "noUnassignedVariables": "warn",
+        "noUnknownAtRules": "off",
         "useAwait": "warn",
         "useErrorMessage": "warn"
       }

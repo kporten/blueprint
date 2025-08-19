@@ -28,10 +28,18 @@ This is a blueprint for a web app with Next.js.
 
 :gem: [README](./apps/with-next/README.md)
 
+### @blueprint/with-orpc
+
+This is a blueprint for a typesafe API with oRPC.
+
+:electric_plug: [Port 4000](http://localhost:4000)
+
+:gem: [README](./apps/with-orpc/README.md)
+
 ## Getting Started
 
 > [!IMPORTANT]
-> Prerequisite is the global installation of [Bun](https://bun.sh/docs/installation) and [Turborepo](https://turbo.build/repo/docs/installing).
+> Prerequisite is the global installation of [Bun](https://bun.sh/docs/installation) as runtime, [Turborepo](https://turbo.build/repo/docs/installing) for task orchestration and optionally [Docker](https://www.docker.com/) for containerization.
 
 1. Clone the blueprint: `bunx degit kporten/blueprint my-project`
 2. Follow the setup instructions in each app blueprint that you want to use.
@@ -42,34 +50,33 @@ This is a blueprint for a web app with Next.js.
 
 ## Tasks
 
-### Server
+### Development
 
 ```sh
 # start development servers
 turbo dev
-```
 
-### Quality
+# build apps
+turbo build
 
-```sh
 # check types
 turbo typecheck
 
-# check format and lint
-turbo check
-
-# format files
-turbo format
-```
-
-### Tests
-
-```sh
 # execute tests
 turbo test
 
 # execute tests in watch mode
 turbo test:watch
+```
+
+### Quality
+
+```sh
+# check format and lint
+turbo check
+
+# fix format and lint issues
+turbo check:fix
 ```
 
 ### Database
@@ -93,3 +100,13 @@ turbo db:seed
 
 > [!NOTE]
 > Configuration: [turbo.json](./turbo.json)
+
+## Docker
+
+```sh
+# build docker images
+docker compose build
+
+# start docker containers
+docker compose up
+```

@@ -15,12 +15,14 @@ const db = drizzle({
   casing: 'snake_case',
 });
 
-mock.module('#lib/db', () => {
+mock.module('#db/client', () => {
   return { db };
 });
 
 beforeAll(async () => {
-  await migrate(db, { migrationsFolder: './migrations' });
+  await migrate(db, {
+    migrationsFolder: './src/db/migrations',
+  });
 });
 
 afterEach(async () => {

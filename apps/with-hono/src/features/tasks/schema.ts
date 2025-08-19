@@ -1,10 +1,13 @@
-import type { z } from 'zod';
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
+import * as z from 'zod';
 
 import { taskTable } from '#db/schema';
-import { createInsertSchema, createSelectSchema } from '#lib/openapi';
 
-export const taskSelectSchema = createSelectSchema(taskTable).openapi({
-  ref: 'Task',
+export const taskSelectSchema = createSelectSchema(taskTable, {
+  id: z.guid(),
+  description: z.string(),
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
 });
 
 export type TaskSelect = z.infer<typeof taskSelectSchema>;

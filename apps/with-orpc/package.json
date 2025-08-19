@@ -1,0 +1,43 @@
+{
+  "name": "@blueprint/with-orpc",
+  "description": "This is a blueprint for a typesafe API with oRPC.",
+  "private": true,
+  "version": "0.0.0",
+  "imports": {
+    "#*": [
+      "./src/*.ts"
+    ]
+  },
+  "scripts": {
+    "dev": "bun run --hot ./src/index.ts",
+    "typecheck": "bunx --bun tsc",
+    "check": "bunx --bun biome check --error-on-warnings",
+    "check:fix": "bunx --bun biome check --fix",
+    "db:generate": "bunx --bun drizzle-kit generate",
+    "db:migrate": "bunx --bun drizzle-kit migrate",
+    "db:check": "bunx --bun drizzle-kit check",
+    "db:push": "bunx --bun drizzle-kit push",
+    "db:seed": "bun run ./src/db/seed.ts"
+  },
+  "dependencies": {
+    "@logtape/logtape": "1.1.1",
+    "@neondatabase/serverless": "1.0.2",
+    "@orpc/json-schema": "1.9.2",
+    "@orpc/openapi": "1.9.2",
+    "@orpc/server": "1.9.2",
+    "@orpc/zod": "1.9.2",
+    "@std/http": "npm:@jsr/std__http@1.0.20",
+    "@t3-oss/env-core": "0.13.8",
+    "drizzle-orm": "0.44.6",
+    "drizzle-zod": "0.8.3",
+    "nosecone": "1.0.0-beta.12",
+    "zod": "4.1.11"
+  },
+  "devDependencies": {
+    "@total-typescript/tsconfig": "1.0.4",
+    "@types/bun": "1.2.23",
+    "drizzle-kit": "0.31.5",
+    "drizzle-seed": "0.3.1",
+    "postgres": "3.4.7"
+  }
+}

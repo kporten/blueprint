@@ -1,13 +1,10 @@
-import { createId } from '@paralleldrive/cuid2';
-import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 
 export const taskTable = pgTable('task', {
-  id: text()
-    .primaryKey()
-    .$default(() => createId()),
+  id: uuid().primaryKey().defaultRandom(),
   description: text().notNull(),
-  createdAt: timestamp().notNull().defaultNow(),
-  updatedAt: timestamp()
+  createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp({ withTimezone: true })
     .notNull()
     .defaultNow()
     .$onUpdate(() => new Date()),

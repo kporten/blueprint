@@ -8,19 +8,12 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**"]
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "typecheck": {
       "dependsOn": ["^typecheck"],
       "inputs": ["**/*.ts", "**/*.tsx"]
-    },
-    "check": {
-      "dependsOn": ["^check"],
-      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
-    },
-    "format": {
-      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
     },
     "test": {
       "inputs": ["**/*.ts", "**/*.tsx"]
@@ -28,6 +21,14 @@
     "test:watch": {
       "cache": false,
       "interactive": true
+    },
+    "check": {
+      "dependsOn": ["^check"],
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
+    },
+    "check:fix": {
+      "dependsOn": ["^check:fix"],
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json"]
     },
     "db:generate": {
       "cache": false,

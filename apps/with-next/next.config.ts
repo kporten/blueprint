@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   },
   output: 'standalone',
   poweredByHeader: false,
+  experimental: {
+    devtoolSegmentExplorer: true,
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

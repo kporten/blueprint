@@ -1,6 +1,11 @@
-import { app } from './app';
+import { serve } from 'bun';
 
-export default {
-  port: 8000,
+import { app } from '#app';
+import { env } from '#lib/env';
+
+const server = serve({
+  port: env.PORT,
   fetch: app.fetch,
-};
+});
+
+console.info(`Listening on ${server.url}`);

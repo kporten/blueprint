@@ -1,12 +1,13 @@
 # Common
 **/.DS_Store
-**/.env*
-**/.turbo
+**/.env
 **/*.tsbuildinfo
-**/node_modules
+
+**/.turbo/
+**/node_modules/
 
 # Next.js
-**/.next
+**/.next/
 
 # Docker
-.git
+.git/

@@ -2,14 +2,14 @@
 
 :electric_plug: [Port 8000](http://localhost:8000)
 
-This is a blueprint for a REST API including the following features:
+This is a blueprint for a REST API with Hono.
 
-- OpenAPI specification
-- PostgreSQL database setup with [Neon](https://neon.tech)
-- Middleware for CORS, Secure Headers, Timing and Logger
-- Centralized error handling
-- Example routes and tests for tasks
-- Docker (optional)
+- 🚀 [Hono](https://hono.dev) as web framework with centralized error handling, CORS, security headers, timing and logging middleware
+- 🗄️ [Drizzle](https://orm.drizzle.team) as ORM with a [Neon](https://neon.tech) PostgreSQL database
+- ✅ [Zod](https://zod.dev) for data validation
+- 🌍 [T3 Env](https://env.t3.gg) for type-safe environment variables
+- 🐳 Docker setup with Bun runtime
+- 🧪 Tests with Bun test runner
 
 ## Setup
 
@@ -23,29 +23,25 @@ This is a blueprint for a REST API including the following features:
 ```sh
 # start development server
 turbo @blueprint/with-hono#dev
-```
 
-### Quality
-
-```sh
 # check types
 turbo @blueprint/with-hono#typecheck
 
-# check format and lint
-turbo @blueprint/with-hono#check
-
-# format files
-turbo @blueprint/with-hono#format
-```
-
-### Tests
-
-```sh
 # execute tests
 turbo @blueprint/with-hono#test
 
 # execute tests in watch mode
 turbo @blueprint/with-hono#test:watch
+```
+
+### Quality
+
+```sh
+# check format and lint
+turbo @blueprint/with-hono#check
+
+# format files
+turbo @blueprint/with-hono#check:fix
 ```
 
 ### Database
@@ -73,10 +69,3 @@ turbo @blueprint/with-hono#db:seed
 # https://orm.drizzle.team/docs/kit-overview
 bunx drizzle-kit [command]
 ```
-
-## Tech Stack
-
-- [Hono](https://hono.dev) with [Hono OpenAPI](https://github.com/rhinobase/hono-openapi) as web framework
-- [Drizzle](https://orm.drizzle.team/) as ORM
-- [Zod](https://zod.dev) for data validation
-- [Scalar](https://scalar.com) as OpenAPI reference user interface

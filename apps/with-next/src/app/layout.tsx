@@ -10,16 +10,12 @@ export const metadata: Metadata = {
   description: 'This is a blueprint for a web app with Next.js.',
 };
 
-export default async function AppLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: LayoutProps<'/'>) {
   const locale = await getLocale();
 
   return (
     <html lang={locale}>
-      <body className="p-2">
+      <body className="p-2 font-sans antialiased">
         <NextIntlClientProvider>
           <NuqsAdapter>{children}</NuqsAdapter>
         </NextIntlClientProvider>

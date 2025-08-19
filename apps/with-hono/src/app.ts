@@ -5,45 +5,26 @@ import { HTTPException } from 'hono/http-exception';
 import { logger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
 import { timing } from 'hono/timing';
-import { describeRoute, openAPISpecs } from 'hono-openapi';
 
-import { createErrorSchema, jsonResponse } from '#lib/openapi';
+import tasksRoutes from '#features/tasks/routes';
 
-import pkg from '../package.json';
-import routes from './routes';
+export const app = new Hono();
 
-export const app = new Hono()
-  .use(cors())
-  .use(secureHeaders())
-  .use(timing())
-  .use(logger())
-  .use(
-    describeRoute({
-      responses: {
-        [STATUS_CODE.InternalServerError]: jsonResponse(
-          createErrorSchema(STATUS_CODE.InternalServerError),
-          STATUS_TEXT[STATUS_CODE.InternalServerError],
-        ),
-      },
-    }),
-  )
-  .route('/', routes);
+app.use(cors());
+app.use(secureHeaders());
+app.use(timing());
+app.use(logger());
 
-app.get(
-  '/openapi',
-  openAPISpecs(app, {
-    documentation: {
-      info: {
-        title: pkg.name,
-        description: pkg.description,
-        version: pkg.version,
-      },
+app.route('/tasks', tasksRoutes);
+
+app.notFound((c) => {
+  return c.json(
+    {
+      status: STATUS_CODE.NotFound,
+      message: STATUS_TEXT[STATUS_CODE.NotFound],
     },
-  }),
-);
-
-app.notFound(() => {
-  throw new HTTPException(STATUS_CODE.NotFound);
+    STATUS_CODE.NotFound,
+  );
 });
 
 app.onError((err, c) => {
