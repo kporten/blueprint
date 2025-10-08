@@ -10,6 +10,7 @@ This is a blueprint for a web app with Next.js.
 - 🔍 [Nuqs](https://nuqs.47ng.com) for type-safe search params
 - 🗄️ [Drizzle](https://orm.drizzle.team) as ORM with a [Neon](https://neon.tech) PostgreSQL database
 - ✅ [Zod](https://zod.dev) for data validation
+- 🔒 [Arcjet Nosecone](https://docs.arcjet.com/nosecone/quick-start) for security headers
 - 🌍 [T3 Env](https://env.t3.gg) for type-safe environment variables
 - 🐳 Docker setup with Bun runtime (Next.js standalone output)
 
