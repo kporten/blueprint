@@ -6,11 +6,11 @@ import { env } from '@/lib/env';
 import * as schema from './schema';
 
 const global = globalThis as unknown as {
-  drizzle: NeonHttpDatabase<typeof schema> | undefined;
+  $drizzle: NeonHttpDatabase<typeof schema> | undefined;
 };
 
 export const db =
-  global.drizzle ??
+  global.$drizzle ??
   drizzle({
     client: neon(env.DATABASE_URL),
     schema,
@@ -18,5 +18,5 @@ export const db =
   });
 
 if (process.env.NODE_ENV === 'development') {
-  global.drizzle = db;
+  global.$drizzle = db;
 }
