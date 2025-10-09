@@ -27,6 +27,12 @@ turbo @blueprint/with-orpc#dev
 
 # check types
 turbo @blueprint/with-orpc#typecheck
+
+# execute tests
+turbo @blueprint/with-orpc#test
+
+# execute tests in watch mode
+turbo @blueprint/with-orpc#test:watch
 ```
 
 ### Quality

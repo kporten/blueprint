@@ -87,6 +87,7 @@
         "zod": "4.1.11",
       },
       "devDependencies": {
+        "@electric-sql/pglite": "0.3.10",
         "@total-typescript/tsconfig": "1.0.4",
         "@types/bun": "1.2.23",
         "drizzle-kit": "0.31.5",

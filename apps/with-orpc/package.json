@@ -13,6 +13,8 @@
     "typecheck": "bunx --bun tsc",
     "check": "bunx --bun biome check --error-on-warnings",
     "check:fix": "bunx --bun biome check --fix",
+    "test": "bun test --preload ./test/setup.ts",
+    "test:watch": "bun test --watch --preload ./test/setup.ts",
     "db:generate": "bunx --bun drizzle-kit generate",
     "db:migrate": "bunx --bun drizzle-kit migrate",
     "db:check": "bunx --bun drizzle-kit check",
@@ -34,6 +36,7 @@
     "zod": "4.1.11"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "0.3.10",
     "@total-typescript/tsconfig": "1.0.4",
     "@types/bun": "1.2.23",
     "drizzle-kit": "0.31.5",
