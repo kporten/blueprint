@@ -7,7 +7,7 @@ export const env = createEnv({
   server: {
     DATABASE_URL: z.url({ protocol: /^postgresql$/ }),
     LOG_LEVEL_ORPC: z.enum(getLogLevels()).default('info'),
-    NODE_ENV: z.enum(['development', 'production']).default('development'),
+    NODE_ENV: z.enum(['development', 'production']),
     PORT: z.coerce.number().int().positive().default(4000),
   },
   // biome-ignore-end lint/style/useNamingConvention: env

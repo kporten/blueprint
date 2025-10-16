@@ -24,21 +24,21 @@
   "dependencies": {
     "@logtape/logtape": "1.1.1",
     "@neondatabase/serverless": "1.0.2",
-    "@orpc/json-schema": "1.9.2",
-    "@orpc/openapi": "1.9.2",
-    "@orpc/server": "1.9.2",
-    "@orpc/zod": "1.9.2",
-    "@std/http": "npm:@jsr/std__http@1.0.20",
+    "@orpc/json-schema": "1.9.4",
+    "@orpc/openapi": "1.9.4",
+    "@orpc/server": "1.9.4",
+    "@orpc/zod": "1.9.4",
+    "@std/http": "npm:@jsr/std__http@1.0.21",
     "@t3-oss/env-core": "0.13.8",
     "drizzle-orm": "0.44.6",
     "drizzle-zod": "0.8.3",
-    "nosecone": "1.0.0-beta.12",
-    "zod": "4.1.11"
+    "nosecone": "1.0.0-beta.13",
+    "zod": "4.1.12"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "0.3.10",
+    "@electric-sql/pglite": "0.3.11",
     "@total-typescript/tsconfig": "1.0.4",
-    "@types/bun": "1.2.23",
+    "@types/bun": "1.3.0",
     "drizzle-kit": "0.31.5",
     "drizzle-seed": "0.3.1",
     "postgres": "3.4.7"
