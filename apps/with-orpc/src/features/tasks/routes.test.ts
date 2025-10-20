@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'bun:test';
 
-import { call, ORPCError } from '@orpc/server';
+import { call } from '@orpc/server';
 
 import routes from './routes';
 
@@ -21,7 +21,7 @@ describe('create', () => {
         // @ts-expect-error test
         body: {},
       }),
-    ).rejects.toThrowError(ORPCError);
+    ).rejects.toMatchObject({ code: 'BAD_REQUEST' });
   });
 });
 
@@ -57,7 +57,7 @@ describe('read', () => {
   it('should send an error if an invalid id is provided', () => {
     expect(
       call(routes.tasks.find, { params: { id: 'test' } }),
-    ).rejects.toThrowError(ORPCError);
+    ).rejects.toMatchObject({ code: 'BAD_REQUEST' });
   });
 
   it('should send an error if an unavailable id is provided', () => {
@@ -65,7 +65,7 @@ describe('read', () => {
       call(routes.tasks.find, {
         params: { id: '04aed59a-032c-4437-97f5-cec7477b8158' },
       }),
-    ).rejects.toThrowError(ORPCError);
+    ).rejects.toMatchObject({ code: 'NOT_FOUND' });
   });
 });
 
@@ -98,7 +98,7 @@ describe('update', () => {
         params: { id: createdJson.id },
         body: {},
       }),
-    ).rejects.toThrowError(ORPCError);
+    ).rejects.toMatchObject({ code: 'BAD_REQUEST' });
   });
 
   it('should send an error if an invalid id is provided', () => {
@@ -107,7 +107,7 @@ describe('update', () => {
         params: { id: 'test' },
         body: { description: 'updated' },
       }),
-    ).rejects.toThrowError(ORPCError);
+    ).rejects.toMatchObject({ code: 'BAD_REQUEST' });
   });
 
   it('should send an error if an unavailable id is provided', () => {
@@ -116,7 +116,7 @@ describe('update', () => {
         params: { id: '04aed59a-032c-4437-97f5-cec7477b8158' },
         body: { description: 'updated' },
       }),
-    ).rejects.toThrowError(ORPCError);
+    ).rejects.toMatchObject({ code: 'NOT_FOUND' });
   });
 });
 
@@ -140,7 +140,7 @@ describe('delete', () => {
       call(routes.tasks.remove, {
         params: { id: 'test' },
       }),
-    ).rejects.toThrowError(ORPCError);
+    ).rejects.toMatchObject({ code: 'BAD_REQUEST' });
   });
 
   it('should send an error if an unavailable id is provided', () => {
@@ -148,6 +148,6 @@ describe('delete', () => {
       call(routes.tasks.remove, {
         params: { id: '04aed59a-032c-4437-97f5-cec7477b8158' },
       }),
-    ).rejects.toThrowError(ORPCError);
+    ).rejects.toMatchObject({ code: 'NOT_FOUND' });
   });
 });
