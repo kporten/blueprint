@@ -16,16 +16,15 @@ export class RequestLoggerPlugin<T extends Context>
       const startTime = Date.now();
 
       const res = await next();
-      const status = res.response?.status;
 
-      const duration = Date.now() - startTime;
-
-      orpcLogger.info('{method} {path} {status} in {duration}ms', {
-        method: request.method,
-        path: new URL(request.url).pathname,
-        status,
-        duration,
-      });
+      if (res.response) {
+        orpcLogger.info('{method} {path} {status} in {duration}ms', {
+          method: request.method,
+          path: new URL(request.url).pathname,
+          status: res.response.status,
+          duration: Date.now() - startTime,
+        });
+      }
 
       return res;
     });

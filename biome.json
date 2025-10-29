@@ -8,7 +8,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!**/migrations"]
+    "includes": ["**", "!**/migrations", "!**/*.d.ts"]
   },
   "assist": {
     "actions": {
@@ -34,7 +34,6 @@
     "indentStyle": "space"
   },
   "linter": {
-    "includes": ["**", "!**/*.d.ts"],
     "rules": {
       "complexity": {
         "noImplicitCoercions": "warn",
@@ -63,6 +62,12 @@
         "useCollapsedIf": "warn",
         "useConsistentBuiltinInstantiation": "warn",
         "useConsistentObjectDefinitions": "warn",
+        "useConsistentTypeDefinitions": {
+          "level": "warn",
+          "options": {
+            "style": "interface"
+          }
+        },
         "useDefaultParameterLast": "warn",
         "useExplicitLengthCheck": "warn",
         "useFilenamingConvention": {
@@ -78,6 +83,7 @@
           }
         },
         "useNumberNamespace": "warn",
+        "useReactFunctionComponents": "warn",
         "useShorthandAssign": "warn",
         "useThrowNewError": "warn",
         "useThrowOnlyError": "warn"
@@ -91,7 +97,6 @@
         },
         "noEmptyBlockStatements": "warn",
         "noUnassignedVariables": "warn",
-        "noUnknownAtRules": "off",
         "useAwait": "warn",
         "useErrorMessage": "warn"
       }
@@ -100,6 +105,11 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "single"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
     }
   }
 }
