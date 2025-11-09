@@ -1,4 +1,4 @@
-FROM oven/bun:1.3.1-alpine AS base
+FROM oven/bun:1.3.2-alpine AS base
 WORKDIR /app
 
 FROM base AS prune
@@ -7,7 +7,7 @@ RUN bunx turbo prune @blueprint/with-hono --docker
 
 FROM base AS install
 COPY --from=prune /app/out/json .
-RUN bun install --frozen-lockfile --production
+RUN bun install --frozen-lockfile --production --linker=isolated
 
 FROM base AS release
 COPY --from=install --chown=bun:bun /app/node_modules ./node_modules
