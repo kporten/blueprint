@@ -4,9 +4,6 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const nextConfig: NextConfig = {
   output: 'standalone',
   poweredByHeader: false,
-  experimental: {
-    turbopackFileSystemCacheForDev: true,
-  },
 };
 
 const withNextIntl = createNextIntlPlugin();

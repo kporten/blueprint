@@ -10,31 +10,31 @@
   },
   "scripts": {
     "dev": "bun run --hot ./src/index.ts",
-    "typecheck": "bunx --bun tsc",
-    "check": "bunx --bun biome check --error-on-warnings",
-    "check:fix": "bunx --bun biome check --fix",
+    "typecheck": "tsc",
+    "check": "biome check --error-on-warnings",
+    "check:fix": "biome check --fix",
     "test": "bun test --preload ./test/setup.ts",
     "test:watch": "bun test --watch --preload ./test/setup.ts",
-    "db:generate": "bunx --bun drizzle-kit generate",
-    "db:migrate": "bunx --bun drizzle-kit migrate",
-    "db:check": "bunx --bun drizzle-kit check",
-    "db:push": "bunx --bun drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:check": "drizzle-kit check",
+    "db:push": "drizzle-kit push",
     "db:seed": "bun run ./src/db/seed.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "1.0.2",
-    "@std/http": "npm:@jsr/std__http@1.0.21",
-    "@t3-oss/env-core": "0.13.8",
-    "drizzle-orm": "0.44.7",
+    "@std/http": "npm:@jsr/std__http@1.0.23",
+    "@t3-oss/env-core": "0.13.10",
+    "drizzle-orm": "0.45.1",
     "drizzle-zod": "0.8.3",
-    "hono": "4.10.4",
-    "zod": "4.1.12"
+    "hono": "4.11.3",
+    "zod": "4.2.1"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.3.14",
     "@total-typescript/tsconfig": "1.0.4",
-    "@types/bun": "1.3.2",
-    "drizzle-kit": "0.31.6",
+    "@types/bun": "1.3.5",
+    "drizzle-kit": "0.31.8",
     "drizzle-seed": "0.3.1",
     "postgres": "3.4.7"
   }

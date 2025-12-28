@@ -1,4 +1,4 @@
-import { experimental_SmartCoercionPlugin as SmartCoercionPlugin } from '@orpc/json-schema';
+import { SmartCoercionPlugin } from '@orpc/json-schema';
 import { OpenAPIHandler } from '@orpc/openapi/fetch';
 import { OpenAPIReferencePlugin } from '@orpc/openapi/plugins';
 import { ORPCError, onError } from '@orpc/server';
@@ -45,7 +45,7 @@ export default new OpenAPIHandler(router, {
   interceptors: [
     onError((error, { request }) => {
       if (error instanceof Error && !(error instanceof ORPCError)) {
-        orpcLogger.error(`OpenAPIHandler Error: ${error.message}`, {
+        orpcLogger.error('OpenAPIHandler Error: {error.message}', {
           error: {
             name: error.name,
             message: error.message,
